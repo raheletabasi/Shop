@@ -10,6 +10,6 @@ namespace Shop.Areas.Admin.Models
         public int QuntityInStock { get; set; }
         public decimal Cost { get; set; }
 
-        public Product product { get; set; }
+        public Product Product { get; set; }
     }
 }
