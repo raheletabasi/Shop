@@ -8,6 +8,9 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Order\Controllers\" />
+    <Folder Include="Areas\Order\Data\" />
+    <Folder Include="Areas\Order\Views\" />
   </ItemGroup>
 
   <ItemGroup>
