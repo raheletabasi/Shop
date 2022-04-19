@@ -37,13 +37,28 @@ namespace Shop.Areas.Account.Controllers
 
             if (userLogin == null)
             {
-                ModelState.AddModelError(string.Empty, $"ایمیل {0} در سامانه ثبت نشده است");
+                ModelState.AddModelError(string.Empty, $"ایمیل {loginViewModel.Email} در سامانه ثبت نشده است");
                 return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction("Register", "Account");
         }
 
-        
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterViewModel registerViewModel)
+        {
+            if(!ModelState.IsValid)
+                return View(registerViewModel);
+
+            if (_dbContext.Users.Any(usr => usr.Email == registerViewModel.Email.ToLower()))
+                ModelState.AddModelError("Email", $" ایمیل {registerViewModel.Email} قبلا ثبت شده است");
+
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
