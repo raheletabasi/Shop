@@ -20,12 +20,14 @@ namespace Shop.Areas.Account.Controllers
             return View();
         }
 
+        [Route("/Login")]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("/Login")]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -38,10 +40,10 @@ namespace Shop.Areas.Account.Controllers
             if (userLogin == null)
             {
                 ModelState.AddModelError(string.Empty, $"ایمیل {loginViewModel.Email} در سامانه ثبت نشده است");
-                return RedirectToAction("Index", "Home");
+                return View(loginViewModel);
             }
 
-            return RedirectToAction("Register", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Register()
